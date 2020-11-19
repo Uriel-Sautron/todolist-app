@@ -5,8 +5,19 @@ class EmailsController < ApplicationController
 
   def show
     @email = Email.find(params[:id])
+    @email.status = true
+    @email.save
     respond_to do |f|
       f.html { redirect_to email_path(email.id)}
+      f.js {}
+    end
+  end
+
+  def update
+    @email= Email.find(params[:id])
+    @email.update(email_params)
+    respond_to do |f|
+      f.html {redirect_to root_path}
       f.js {}
     end
   end
@@ -38,4 +49,9 @@ class EmailsController < ApplicationController
     end
   end
 
+  private
+
+  def email_params
+    params.permit(:object, :body, :status, :id)
+  end
 end

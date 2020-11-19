@@ -1,14 +1,18 @@
 <% if @email != nil %>
   
-  <div  class="container">
-    <h2><%= @email.object %></h2>
-    <p><%= @email.body %></p>
-    <div class="d-flex justify-content-around">
-      <%= link_to 'Delete', email_path(@email), method: :delete, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm mr-5" %>
-      <%= button_to "Marquer comme non-lu", remote: true, class: "btn btn-primary" %>
+  <div  class="container ">
+    <h2 class="mb-5"><%= @email.object %></h2>
+    <p class="mb-5"><%= @email.body %></p>
+    <div class="d-flex justify-content-around mt-5">
+      <%= link_to 'Delete', email_path(@email), method: :delete, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-danger mr-5" %>
+      <% if email.status == true %>
+        <%= link_to "Marquer comme non-lu", email_path(@email), remote: true, class: "btn btn-primary", data: {remote: true, params: { id: email.id, status: !email.status}.to_param, method: "put"}%>
+      <% else %>
+        <%= link_to "Marquer comme lu", email_path(@email), remote: true, class: "btn btn-warning", data: {remote: true, params: { id: email.id, status: !email.status}.to_param, method: "put"}%>
+      <% end %>
     </div>
   </div>
 
 <% else %>
   
-<% end %>
+<% end %> 

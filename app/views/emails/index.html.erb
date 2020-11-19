@@ -1,19 +1,19 @@
 
 <div class="container">
-  <%= button_to "Recevoir un email", emails_path, action: "create", remote: true, class: "btn btn-success mb-3" %>
+  <%= button_to "Recevoir un email", emails_path, action: "create", remote: true, class: "btn btn-outline-success mb-3" %>
   <table class="table">
-    <thead>
+    <thead class="bg-light text-muted">
       <tr>
-        <th class="row ml-1 border">Emails</th>
-        <th class="col text-center">Email sélectionné</th>
+        <th class="row ml-1 border-0"><h3>Emails</h3></th>
+        <th class="col text-center border-0"><h3>Email content</h3></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <% @emails.each do |email| %>
+        <% @emails.order('created_at DESC').each do |email| %>
           <%= render "email", email: email%>
         <% end %>
-        <td id="email" class="col text-center container">
+        <td id="email" class="col text-center container border-0">
           <%= render "show"%>
         </td>
       </tr>

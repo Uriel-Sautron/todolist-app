@@ -1,1 +1,5 @@
-<td id="<%= email.id %>" class="row ml-1 border"><%= link_to email.object, email_path(email.id), remote: true %></td>
+<% if email.status == false %>
+  <td id="<%= email.id %>" class="row ml-1 list-group-item list-group-item-action"><%= link_to email.object, email_path(email.id), class: "text-decoration-none font-weight-bold", remote: true %></td>
+  <% else %>
+  <td id="<%= email.id %>" class="row ml-1 list-group-item list-group-item-action"><%= link_to email.object, email_path(email.id), remote: true, class: "text-decoration-none text-reset" %></td>
+<% end %>
