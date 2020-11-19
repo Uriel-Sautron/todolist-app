@@ -1,0 +1,14 @@
+<% if @email != nil %>
+  
+  <div  class="container">
+    <h2><%= @email.object %></h2>
+    <p><%= @email.body %></p>
+    <div class="d-flex justify-content-around">
+      <%= link_to 'Delete', email_path(@email), method: :delete, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm mr-5" %>
+      <%= button_to "Marquer comme non-lu", remote: true, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% else %>
+  
+<% end %>

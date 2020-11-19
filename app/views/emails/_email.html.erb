@@ -1,1 +1,1 @@
-<td class="row ml-1 border"><%= email.object %></td>
+<td id="<%= email.id %>" class="row ml-1 border"><%= link_to email.object, email_path(email.id), remote: true %></td>

@@ -3,6 +3,24 @@ class EmailsController < ApplicationController
     @emails = Email.all
   end
 
+  def show
+    @email = Email.find(params[:id])
+    respond_to do |f|
+      f.html { redirect_to email_path(email.id)}
+      f.js {}
+    end
+  end
+
+  def destroy
+    @email = Email.find(params[:id])
+    @email.destroy
+    respond_to do |f|
+      f.html {redirect_to root_path}
+      f.js {}
+    end
+  end
+    
+
   def create
     @email = Email.new(
       object: Faker::Company.buzzword,

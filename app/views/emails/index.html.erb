@@ -9,11 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
+      <tr>
         <% @emails.each do |email| %>
           <%= render "email", email: email%>
         <% end %>
-        <td id="email" class="col text-center"></td>
+        <td id="email" class="col text-center container">
+          <%= render "show"%>
+        </td>
       </tr>
     </tbody>
   </table>
