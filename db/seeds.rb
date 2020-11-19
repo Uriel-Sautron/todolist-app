@@ -17,3 +17,11 @@ require 'faker'
     my_task.save
   end
 end
+
+# Email
+
+10.times do 
+  my_email = Email.create(
+  object: Faker::Company.buzzword,
+  body: Faker::Lorem.paragraphs)
+end
